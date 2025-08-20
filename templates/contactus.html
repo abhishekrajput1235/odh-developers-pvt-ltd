@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+
+{% block title %}ODH Developers Contact{% endblock %}
+
+{% block content %}
+
+
+    <div class="breadcumb-wrapper" data-bg-src="static/assets/img/bg/breadcrumb-bg.jpg">
+        <div class="container">
+            <div class="breadcumb-content">
+                <h1 class="breadcumb-title">Contact</h1>
+                <ul class="breadcumb-menu">
+                    <li><a href="/">Home</a></li>
+                    <li>Contact with Us</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="contact-area-2 space-top" id="contact-sec">
+        <div class="container">
+            <div class="row gy-4 justify-content-center">
+                <div class="col-xl-4 col-lg-6 contact-feature-wrap">
+                    <div class="contact-feature">
+                        <div class="contact-feature-icon"><i class="fas fa-location-dot"></i></div>
+                        <div class="media-body">
+                            <p class="contact-feature_label">Address</p><a href="https://www.google.com/maps/dir//1,+Awas+Vikas,+Kalyanpur,+Kanpur,+Uttar+Pradesh+208017/@26.4774661,80.2725524,15z/data=!4m8!4m7!1m0!1m5!1m1!1s0x399c37bd1b91ce17:0x54e4fcd4d90526b!2m2!1d80.2520423!2d26.4960136?entry=ttu&g_ep=EgoyMDI1MDgxMy4wIKXMDSoASAFQAw%3D%3D"
+                                class="contact-feature_link">Kanpur Nagar 208017(U.P.)</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-6 contact-feature-wrap">
+                    <div class="contact-feature">
+                        <div class="contact-feature-icon"><i class="fas fa-phone"></i></div>
+                        <div class="media-body">
+                            <p class="contact-feature_label">Phone Number</p><a href="tel:+918765579797"
+                                class="contact-feature_link">+91 8765579797</a> <a href="tel:+917408579797"
+                                class="contact-feature_link">+91 7408579797</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-6 contact-feature-wrap">
+                    <div class="contact-feature">
+                        <div class="contact-feature-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="media-body">
+                            <p class="contact-feature_label">Email Address</p><a href="mailto:info@odhgroups.com"
+                                class="contact-feature_link">info@odhgroups.com</a> <a
+                                href="mailto:care@odhgroups.com"
+                                class="contact-feature_link">care@odhgroups.com</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="contact-form-area">
+        <div class="container">
+            <div class="row gx-0">
+                <div class="col-xl-12">
+                    <div class="contact-all-wrapper">
+                        <div class="contact-form-wrap">
+                            <form action="https://html.themeholy.com/piller/demo/mail.php" method="POST"
+                                class="contact-form ajax-contact">
+                                <h3 class="form-title">Do you have questions? Contact Us</h3>
+                                <div class="row">
+                                    <div class="form-group col-md-6"><input type="text" class="form-control" name="name"
+                                            id="name" placeholder="Name *"></div>
+                                    <div class="form-group col-md-6"><input type="tel" class="form-control"
+                                            name="number" id="number" placeholder="Phone *"></div>
+                                    <div class="form-group col-md-12"><input type="email" class="form-control"
+                                            name="email" id="email" placeholder="Email Address *"></div>
+                                    <div class="form-group col-md-12"><select name="subject" id="subject"
+                                            class="orderby">
+                                            <option value="" disabled="" selected="" hidden="">Select Subject</option>
+                                            <option value="Apartment">Apartment</option>
+                                            <option value="House">House</option>
+                                            <option value="Villa">Villa</option>
+                                            <option value="Land">Land</option>
+                                        </select></div>
+                                    <div class="form-group col-12"><textarea name="Your Messsage*" id="message"
+                                            cols="30" rows="3" class="form-control"
+                                            placeholder="Your Message *"></textarea></div>
+                                    <div class="form-btn text-start col-12"><button class="th-btn radius">Send
+                                            message</button></div>
+                                </div>
+                                <p class="form-messages mb-0 mt-3"></p>
+                            </form>
+                        </div>
+                        <div class="contact-form-thumb overflow-hidden"><img
+                                src="static/assets/img/contact/contact-page-thumb.jpg" alt="img"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="space-top">
+        <div class="container-fluid p-0">
+            <div class="contact-map"><iframe
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d14285.301561635193!2d80.2725524!3d26.47746610000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1755608812867!5m2!1sen!2sin"
+                    allowfullscreen="" loading="lazy"></iframe>
+                <div class="contact-icon"><img src="static/assets/img/icon/con-location-dot.svg" alt="img"></div>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}
