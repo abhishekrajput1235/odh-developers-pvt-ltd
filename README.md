@@ -121,8 +121,8 @@ Open a Pull Request
 
 Company: ODH Developers
 
-Email: [anandraj60094@gmail.com]
+Email: anandraj60094@gmail.com
 
-Website: [[your live website URL here](https://realty.odhpay.com/)]
+Website: [(https://realty.odhpay.com/)]
 
-Phone: [(9651292995)]
+Phone: 9651292995
