@@ -21,8 +21,8 @@
     --th-border-color: #D8DDE1;
     --th-border-color2: #303030;
     --dark-color: #021526;
-    --title-font: "Plus Jakarta Sans", serif;
-    --body-font: "Inter", serif;
+    --title-font: "Morebi Rounded", serif;
+    --body-font: "Morebi Rounded", serif;
     --icon-font: "Font Awesome 6 Pro";
     --main-container: 1620px;
     --container-gutters: 30px;
@@ -31,6 +31,23 @@
     --section-title-space: 60px;
     --ripple-ani-duration: 5s
 }
+
+
+@font-face {
+    font-family: 'Morebi Rounded';
+    src: url('../fonts/fontawesome/MorebiRounded-Regular.woff2') format('woff2'),
+        url('../fonts/fontawesome/MorebiRounded-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+body {
+    font-family: 'Morebi Rounded', sans-serif;
+}
+
+
 
 html,
 body {

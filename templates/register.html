@@ -1,0 +1,624 @@
+{% extends "base.html" %}
+
+{% block title %}ODH Developers Registration{% endblock %}
+
+{% block content %}
+
+<div class="breadcumb-wrapper" data-bg-src="{{ url_for('static', path='assets/img/bg/breadcrumb-bg.jpg') }}">
+  <div class="container">
+    <div class="breadcumb-content">
+      <h1 class="breadcumb-title">Registration</h1>
+      <ul class="breadcumb-menu">
+        <li><a href="/">Home</a></li>
+        <li>Register</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="contact-form-area margin-bottom-10">
+  <div class="container">
+    <div class="row gx-0 justify-content-center">
+      <div class="col-lg-10 col-xl-8">
+        <div class="contact-all-wrapper shadow-lg rounded-4 p-4 p-md-5 bg-white flex flex-column">
+
+          <!-- Enhanced Progress Bar -->
+          <div class="mb-5">
+            <div class="d-none d-md-flex justify-content-between position-relative mb-3">
+              <div class="progress position-absolute w-100" style="height: 8px; top: 40%; z-index: 1;">
+                <div id="progressBar" class="progress-bar bg-success" style="width: 25%; transition: width 0.5s ease-in-out;"></div>
+              </div>
+              <div class="d-flex justify-content-between w-100 position-relative" style="z-index: 2;">
+                <div class="step-circle active">
+                  <div class="circle-number">1</div>
+                  <div class="step-label">Mobile</div>
+                </div>
+                <div class="step-circle">
+                  <div class="circle-number">2</div>
+                  <div class="step-label">Email</div>
+                </div>
+                <div class="step-circle">
+                  <div class="circle-number">3</div>
+                  <div class="step-label">Aadhaar</div>
+                </div>
+                <div class="step-circle">
+                  <div class="circle-number">4</div>
+                  <div class="step-label">Video KYC</div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center d-block d-md-none">
+              <span class="badge bg-success fs-6 px-3 py-2">Step 1 of 4: Mobile Verification</span>
+            </div>
+          </div>
+
+          <form id="registrationForm" action="/register" method="POST" class="flex flex-column justify-content-center">
+            
+            <!-- STEP 1: Mobile -->
+            <div class="form-step active flex justify-content-center align-items-center">
+              <h4 class="mb-3 text-primary">📱 Mobile Verification</h4>
+              <p class="text-muted mb-4">We'll send a verification code to your mobile number</p>
+              
+              <div class="row g-3 align-items-end">
+                <div class="col-md-8">
+                  <div class="form-floating">
+                    <input type="tel" id="mobile" class="form-control form-control-lg" placeholder="Enter 10-digit Mobile Number" maxlength="10" pattern="[0-9]{10}" required>
+                    <label for="mobile">Mobile Number</label>
+                    <div class="invalid-feedback">Please enter a valid 10-digit mobile number</div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <button type="button" id="verifyMobile" class="btn btn-success btn-lg w-100 h-100 py-3">Send OTP</button>
+                </div>
+              </div>
+              
+              <div id="mobileOtpSection" class="mt-4" style="display:none;">
+                <div class="alert alert-info" role="alert">
+                  <i class="fas fa-info-circle me-2"></i>Enter the 6-digit code sent to your mobile
+                </div>
+                <div class="row g-3 align-items-end">
+                  <div class="col-md-8">
+                    <div class="form-floating">
+                      <input type="text" id="mobileOtp" class="form-control form-control-lg" placeholder="Enter OTP (6 digits)" maxlength="6" pattern="[0-9]{6}" required>
+                      <label for="mobileOtp">OTP Code</label>
+                      <div class="invalid-feedback">Please enter a valid 6-digit OTP</div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <button type="button" id="submitMobileOtp" class="btn btn-primary btn-lg w-100 h-100 py-3">Verify OTP</button>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="step-footer mt-5 pt-3 d-flex justify-content-end border-top">
+                <button type="button" class="btn btn-next btn-primary btn-lg px-4" disabled>
+                  Next <i class="fas fa-arrow-right ms-2"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- STEP 2: Email -->
+            <div class="form-step">
+              <h4 class="mb-3 text-primary">📧 Email Verification</h4>
+              <p class="text-muted mb-4">We'll send a verification code to your email address</p>
+              
+              <div class="row g-3 align-items-end">
+                <div class="col-md-8">
+                  <div class="form-floating">
+                    <input type="email" id="email" class="form-control form-control-lg" placeholder="Enter your Email Address" required>
+                    <label for="email">Email Address</label>
+                    <div class="invalid-feedback">Please enter a valid email address</div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <button type="button" id="verifyEmail" class="btn btn-success btn-lg w-100 h-100 py-3">Send OTP</button>
+                </div>
+              </div>
+              
+              <div id="emailOtpSection" class="mt-4" style="display:none;">
+                <div class="alert alert-info" role="alert">
+                  <i class="fas fa-info-circle me-2"></i>Enter the 6-digit code sent to your email
+                </div>
+                <div class="row g-3 align-items-end">
+                  <div class="col-md-8">
+                    <div class="form-floating">
+                      <input type="text" id="emailOtp" class="form-control form-control-lg" placeholder="Enter Email OTP (6 digits)" maxlength="6" pattern="[0-9]{6}" required>
+                      <label for="emailOtp">OTP Code</label>
+                      <div class="invalid-feedback">Please enter a valid 6-digit OTP</div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <button type="button" id="submitEmailOtp" class="btn btn-primary btn-lg w-100 h-100 py-3">Verify OTP</button>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="step-footer mt-5 pt-3 d-flex justify-content-between border-top">
+                <button type="button" class="btn btn-back btn-outline-secondary btn-lg px-4">
+                  <i class="fas fa-arrow-left me-2"></i> Back
+                </button>
+                <button type="button" class="btn btn-next btn-primary btn-lg px-4" disabled>
+                  Next <i class="fas fa-arrow-right ms-2"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- STEP 3: Aadhaar -->
+            <div class="form-step">
+              <h4 class="mb-3 text-primary">🪪 Aadhaar Verification</h4>
+              <p class="text-muted mb-4">We'll send a verification code to your registered mobile number linked with Aadhaar</p>
+              
+              <div class="row g-3 align-items-end">
+                <div class="col-md-8">
+                  <div class="form-floating">
+                    <input type="text" id="aadhaar" class="form-control form-control-lg" placeholder="Enter Aadhaar Number (12 digits)" maxlength="12" pattern="[0-9]{12}" required>
+                    <label for="aadhaar">Aadhaar Number</label>
+                    <div class="invalid-feedback">Please enter a valid 12-digit Aadhaar number</div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <button type="button" id="verifyAadhaar" class="btn btn-success btn-lg w-100 h-100 py-3">Send OTP</button>
+                </div>
+              </div>
+              
+              <div id="aadhaarOtpSection" class="mt-4" style="display:none;">
+                <div class="alert alert-info" role="alert">
+                  <i class="fas fa-info-circle me-2"></i>Enter the 6-digit code sent to your Aadhaar-linked mobile
+                </div>
+                <div class="row g-3 align-items-end">
+                  <div class="col-md-8">
+                    <div class="form-floating">
+                      <input type="text" id="aadhaarOtp" class="form-control form-control-lg" placeholder="Enter Aadhaar OTP (6 digits)" maxlength="6" pattern="[0-9]{6}" required>
+                      <label for="aadhaarOtp">OTP Code</label>
+                      <div class="invalid-feedback">Please enter a valid 6-digit OTP</div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <button type="button" id="submitAadhaarOtp" class="btn btn-primary btn-lg w-100 h-100 py-3">Verify OTP</button>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="step-footer mt-5 pt-3 d-flex justify-content-between border-top">
+                <button type="button" class="btn btn-back btn-outline-secondary btn-lg px-4">
+                  <i class="fas fa-arrow-left me-2"></i> Back
+                </button>
+                <button type="button" class="btn btn-next btn-primary btn-lg px-4" disabled>
+                  Next <i class="fas fa-arrow-right ms-2"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- STEP 4: Video KYC -->
+            <div class="form-step">
+              <h4 class="mb-3 text-primary">🎥 Live Video KYC</h4>
+              <div class="alert alert-info mb-4">
+                <h5 class="alert-heading"><i class="fas fa-camera me-2"></i>Instructions</h5>
+                <ul class="mb-0 ps-3">
+                  <li>Ensure good lighting facing you</li>
+                  <li>Keep your face centered in the frame</li>
+                  <li>Remove any accessories that obscure your face</li>
+                  <li>Click "Start Camera" to begin</li>
+                </ul>
+              </div>
+              
+              <div class="row">
+                <div class="col-md-6 mb-4 mb-md-0">
+                  <div class="video-container position-relative border rounded-3 overflow-hidden bg-dark">
+                    <video id="videoPreview" width="100%" height="300" autoplay playsinline class="d-block mx-auto"></video>
+                    <div id="cameraPlaceholder" class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center text-white bg-secondary">
+                      <i class="fas fa-camera fs-1 mb-2"></i>
+                      <p class="text-center px-3">Camera preview will appear here</p>
+                    </div>
+                  </div>
+                  
+                  <div class="d-flex justify-content-center gap-2 mt-3 flex-wrap">
+                    <button type="button" id="startCamera" class="btn btn-outline-success btn-lg">
+                      <i class="fas fa-play-circle me-2"></i>Start Camera
+                    </button>
+                    <button type="button" id="captureFrame" class="btn btn-primary btn-lg" disabled>
+                      <i class="fas fa-camera me-2"></i>Capture
+                    </button>
+                  </div>
+                </div>
+                
+                <div class="col-md-6">
+                  <div class="capture-guidance border rounded-3 p-3 bg-light">
+                    <h5 class="mb-3"><i class="fas fa-lightbulb me-2 text-warning"></i>Capture Guidelines</h5>
+                    <div class="d-flex mb-3 align-items-center">
+                      <div class="guidance-icon me-3 text-success">
+                        <i class="fas fa-check-circle fa-lg"></i>
+                      </div>
+                      <div>
+                        <h6 class="mb-0">Good Lighting</h6>
+                        <small class="text-muted">Face towards the light source</small>
+                      </div>
+                    </div>
+                    <div class="d-flex mb-3 align-items-center">
+                      <div class="guidance-icon me-3 text-success">
+                        <i class="fas fa-check-circle fa-lg"></i>
+                      </div>
+                      <div>
+                        <h6 class="mb-0">Neutral Expression</h6>
+                        <small class="text-muted">Keep a straight face, no smiles</small>
+                      </div>
+                    </div>
+                    <div class="d-flex mb-3 align-items-center">
+                      <div class="guidance-icon me-3 text-success">
+                        <i class="fas fa-check-circle fa-lg"></i>
+                      </div>
+                      <div>
+                        <h6 class="mb-0">No Head Coverings</h6>
+                        <small class="text-muted">Unless for religious purposes</small>
+                      </div>
+                    </div>
+                    <div class="d-flex align-items-center">
+                      <div class="guidance-icon me-3 text-success">
+                        <i class="fas fa-check-circle fa-lg"></i>
+                      </div>
+                      <div>
+                        <h6 class="mb-0">Clear Background</h6>
+                        <small class="text-muted">Use a plain background</small>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div id="captureStatus" class="alert alert-success mt-3" style="display: none;">
+                    <i class="fas fa-check-circle me-2"></i>Frame captured successfully!
+                  </div>
+                </div>
+              </div>
+              
+              <canvas id="canvasPreview" width="640" height="480" class="d-none"></canvas>
+              <input type="hidden" name="videoKycFrame" id="videoKycFrame">
+              
+              <div class="step-footer mt-5 pt-3 d-flex justify-content-between border-top">
+                <button type="button" class="btn btn-back btn-outline-secondary btn-lg px-4">
+                  <i class="fas fa-arrow-left me-2"></i> Back
+                </button>
+                <button type="submit" class="btn btn-success btn-lg px-4" disabled>
+                  <i class="fas fa-check-circle me-2"></i>Complete Registration
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .form-step { display: none; }
+  .form-step.active { 
+    display: block; 
+    animation: fadeIn 0.5s ease; 
+  }
+  
+  .step-circle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .circle-number {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #e9ecef;
+    color: #6c757d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-bottom: 8px;
+    border: 4px solid #fff;
+    transition: all 0.3s ease;
+  }
+  
+  .step-circle.active .circle-number {
+    background-color: #198754;
+    color: white;
+    box-shadow: 0 0 0 4px rgba(25, 135, 84, 0.2);
+  }
+  
+  .step-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #6c757d;
+    text-align: center;
+    margin-top: 5px;
+  }
+  
+  .step-circle.active .step-label {
+    color: #198754;
+    font-weight: 600;
+  }
+  
+  .video-container {
+    min-height: 300px;
+  }
+  
+  .guidance-icon {
+    width: 30px;
+    text-align: center;
+  }
+  
+  .step-footer {
+    transition: all 0.3s ease;
+  }
+  
+  .btn-next:disabled, .btn[disabled] {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+  
+  @media (max-width: 768px) {
+    .circle-number {
+      width: 40px;
+      height: 40px;
+      font-size: 14px;
+    }
+    .step-label {
+      font-size: 12px;
+    }
+    .btn-lg {
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
+    }
+  }
+  
+  @keyframes fadeIn { 
+    from { opacity: 0; transform: translateY(10px); } 
+    to { opacity: 1; transform: translateY(0); } 
+  }
+
+  .was-validated .form-control:invalid {
+    border-color: #dc3545;
+    padding-right: calc(1.5em + 0.75rem);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right calc(0.375em + 0.1875rem) center;
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+  }
+
+  .was-validated .form-control:valid {
+    border-color: #198754;
+    padding-right: calc(1.5em + 0.75rem);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23198754' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right calc(0.375em + 0.1875rem) center;
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+  }
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const steps = document.querySelectorAll(".form-step");
+  const progressBar = document.getElementById("progressBar");
+  const stepCircles = document.querySelectorAll(".step-circle");
+  const mobileStepLabel = document.querySelector(".d-md-none .badge");
+  let currentStep = 0;
+  
+  const stepLabels = [
+    "Step 1 of 4: Mobile Verification",
+    "Step 2 of 4: Email Verification",
+    "Step 3 of 4: Aadhaar Verification",
+    "Step 4 of 4: Video KYC"
+  ];
+
+  // Show specific step
+  function showStep(step) {
+    steps.forEach((s, i) => s.classList.toggle("active", i === step));
+    progressBar.style.width = `${((step + 1) / steps.length) * 100}%`;
+    stepCircles.forEach((circle, i) => {
+      circle.classList.toggle("active", i <= step);
+    });
+    if (mobileStepLabel) {
+      mobileStepLabel.textContent = stepLabels[step];
+      mobileStepLabel.className = `badge fs-6 px-3 py-2 ${step === steps.length - 1 ? 'bg-success' : 'bg-primary'}`;
+    }
+  }
+
+  // Go to next step
+  function nextStep() {
+    if (currentStep < steps.length - 1) {
+      currentStep++;
+      showStep(currentStep);
+    }
+  }
+
+  // Go to previous step
+  function prevStep() {
+    if (currentStep > 0) {
+      currentStep--;
+      showStep(currentStep);
+    }
+  }
+
+  // Enable next button
+  function enableNextButton() {
+    const nextButton = document.querySelector('.form-step.active .btn-next');
+    if (nextButton) {
+      nextButton.disabled = false;
+    }
+  }
+
+  // Enable submit button on final step
+  function enableSubmitButton() {
+    const submitButton = document.querySelector('.form-step.active button[type="submit"]');
+    if (submitButton) {
+      submitButton.disabled = false;
+    }
+  }
+
+  // Validate form fields
+  function validateField(field) {
+    if (field.checkValidity()) {
+      field.classList.remove('is-invalid');
+      field.classList.add('is-valid');
+      return true;
+    } else {
+      field.classList.remove('is-valid');
+      field.classList.add('is-invalid');
+      return false;
+    }
+  }
+
+  // Add event listeners for back buttons
+  document.querySelectorAll('.btn-back').forEach(button => {
+    button.addEventListener('click', prevStep);
+  });
+
+  // Add event listeners for next buttons
+  document.querySelectorAll('.btn-next').forEach(button => {
+    button.addEventListener('click', nextStep);
+  });
+
+  // ===== MOBILE =====
+  const mobileInput = document.getElementById("mobile");
+  const verifyMobileBtn = document.getElementById("verifyMobile");
+  verifyMobileBtn.addEventListener("click", function () {
+    if (validateField(mobileInput)) {
+      // Disable both input and button
+      mobileInput.disabled = true;
+      verifyMobileBtn.disabled = true;
+      verifyMobileBtn.innerHTML = '<i class="fas fa-check-circle me-2"></i>OTP Sent';
+      verifyMobileBtn.classList.remove('btn-success');
+      verifyMobileBtn.classList.add('btn-secondary');
+      document.getElementById("mobileOtpSection").style.display = "block";
+
+      // Simulate API call (replace with real API logic)
+      setTimeout(() => {
+        // If verification fails, re-enable input + button
+        // mobileInput.disabled = false;
+        // verifyMobileBtn.disabled = false;
+        // verifyMobileBtn.innerHTML = 'Send OTP';
+        // verifyMobileBtn.classList.remove('btn-secondary');
+        // verifyMobileBtn.classList.add('btn-success');
+        // alert("Verification failed. Please try again.");
+        
+        // For demo purposes, we'll assume success
+        enableNextButton();
+      }, 2000);
+    }
+  });
+
+  // On mobile OTP verification, proceed to next step
+  document.getElementById("submitMobileOtp").addEventListener("click", function () {
+    const otpInput = document.getElementById("mobileOtp");
+    if (validateField(otpInput)) {
+      // Simulate OTP verification
+      setTimeout(() => {
+        enableNextButton();
+      }, 1000);
+    }
+  });
+
+  // ===== EMAIL =====
+  const emailInput = document.getElementById("email");
+  const verifyEmailBtn = document.getElementById("verifyEmail");
+  verifyEmailBtn.addEventListener("click", function () {
+    if (validateField(emailInput)) {
+      // Disable both input and button
+      emailInput.disabled = true;
+      verifyEmailBtn.disabled = true;
+      verifyEmailBtn.innerHTML = '<i class="fas fa-check-circle me-2"></i>OTP Sent';
+      verifyEmailBtn.classList.remove('btn-success');
+      verifyEmailBtn.classList.add('btn-secondary');
+      document.getElementById("emailOtpSection").style.display = "block";
+
+      // Simulate API call
+      setTimeout(() => {
+        enableNextButton();
+      }, 2000);
+    }
+  });
+
+  document.getElementById("submitEmailOtp").addEventListener("click", function () {
+    const otpInput = document.getElementById("emailOtp");
+    if (validateField(otpInput)) {
+      setTimeout(() => {
+        enableNextButton();
+      }, 1000);
+    }
+  });
+
+  // ===== AADHAAR =====
+  const aadhaarInput = document.getElementById("aadhaar");
+  const verifyAadhaarBtn = document.getElementById("verifyAadhaar");
+  verifyAadhaarBtn.addEventListener("click", function () {
+    if (validateField(aadhaarInput)) {
+      // Disable both input and button
+      aadhaarInput.disabled = true;
+      verifyAadhaarBtn.disabled = true;
+      verifyAadhaarBtn.innerHTML = '<i class="fas fa-check-circle me-2"></i>OTP Sent';
+      verifyAadhaarBtn.classList.remove('btn-success');
+      verifyAadhaarBtn.classList.add('btn-secondary');
+      document.getElementById("aadhaarOtpSection").style.display = "block";
+
+      // Simulate API call
+      setTimeout(() => {
+        enableNextButton();
+      }, 2000);
+    }
+  });
+
+  document.getElementById("submitAadhaarOtp").addEventListener("click", function () {
+    const otpInput = document.getElementById("aadhaarOtp");
+    if (validateField(otpInput)) {
+      setTimeout(() => {
+        enableNextButton();
+      }, 1000);
+    }
+  });
+
+  // ===== VIDEO KYC =====
+  const video = document.getElementById("videoPreview");
+  const canvas = document.getElementById("canvasPreview");
+  const captureBtn = document.getElementById("captureFrame");
+  const startBtn = document.getElementById("startCamera");
+  const videoKycFrame = document.getElementById("videoKycFrame");
+  const cameraPlaceholder = document.getElementById("cameraPlaceholder");
+  const captureStatus = document.getElementById("captureStatus");
+
+  startBtn.addEventListener("click", async () => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ 
+        video: { width: { ideal: 1280 }, height: { ideal: 720 } } 
+      });
+      video.srcObject = stream;
+      cameraPlaceholder.style.display = "none";
+      captureBtn.disabled = false;
+      startBtn.disabled = true;
+      startBtn.classList.remove('btn-outline-success');
+      startBtn.classList.add('btn-secondary');
+    } catch (err) {
+      alert("Camera access denied: " + err.message);
+    }
+  });
+
+  captureBtn.addEventListener("click", () => {
+    const context = canvas.getContext("2d");
+    context.drawImage(video, 0, 0, canvas.width, canvas.height);
+    videoKycFrame.value = canvas.toDataURL("image/png");
+    captureStatus.style.display = "block";
+    captureBtn.disabled = true;
+    captureBtn.classList.remove('btn-primary');
+    captureBtn.classList.add('btn-secondary');
+    
+    // Stop camera stream
+    const stream = video.srcObject;
+    if (stream) {
+      stream.getTracks().forEach(track => track.stop());
+    }
+    
+    enableSubmitButton();
+  });
+
+  // Initialize the first step
+  showStep(currentStep);
+});
+</script>
+
+{% endblock %}

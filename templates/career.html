@@ -1,10 +1,220 @@
 {% extends "base.html" %}
 
-{% block title %}ODH Careers{% endblock %}
+{% block title %}Careers{% endblock %}
 
 {% block content %}
 
+<!-- Breadcrumb Section -->
+<div class="breadcumb-wrapper" data-bg-src="static/assets/img/bg/breadcrumb-bg.jpg">
+    <div class="container">
+        <div class="breadcumb-content">
+            <h1 class="breadcumb-title">Careers</h1>
+            <ul class="breadcumb-menu">
+                <li><a href="/">Home</a></li>
+                <li>Careers</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Careers Intro Section -->
+<div class="why-sec-2 bg-smoke space" id="careers-intro">
+    <div class="shape-mockup jump d-none d-md-block" style="top: 20%; right: 5%">
+        <img src="static/assets/img/shape/why-2-shape.png" alt="img" />
+    </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-7">
+                <div class="title-area text-center">
+                    <p class="sub-title fadeinup wow" data-wow-duration="1.5s" data-wow-delay="0.1s">
+                        <span class="double-line"></span> Join Our Team
+                    </p>
+                    <h2 class="sec-title fadeinup wow" data-wow-duration="1.5s" data-wow-delay="0.3s">
+                        Build Your Career with ODH Developers
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-10 col-md-11 col-12">
+                <p class="mb-4 text-center">
+                    At ODH Developers, we believe in empowering talent and creating opportunities for growth. Join our team of
+                    dedicated professionals and be part of a company that values innovation, integrity, and excellence in real estate.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Why Work With Us -->
+<div class="container bg-smoke space">
+    <div class="row justify-content-center">
+        <div class="col-xl-7">
+            <div class="title-area text-center">
+                <p class="sub-title fadeinup wow" data-wow-duration="1.5s" data-wow-delay="0.1s">
+                    <span class="double-line"></span> Why Work With ODH Developers
+                </p>
+                <h2 class="sec-title fadeinup wow" data-wow-duration="1.5s" data-wow-delay="0.3s">
+                    A Culture of Growth and Innovation
+                </h2>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center text-center mt-4">
+        <div class="col-md-6 col-lg-4 mb-4">
+            <h5><strong>Professional Growth</strong></h5>
+            <p>Access to training, mentorship, and clear career paths to accelerate your growth.</p>
+        </div>
+        <div class="col-md-6 col-lg-4 mb-4">
+            <h5><strong>Inclusive Culture</strong></h5>
+            <p>Work in a diverse and collaborative environment that values your ideas and contributions.</p>
+        </div>
+        <div class="col-md-6 col-lg-4 mb-4">
+            <h5><strong>Innovation & Technology</strong></h5>
+            <p>Leverage cutting-edge tools and digital solutions to shape the future of real estate.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Open Positions Section -->
+<div class="container  bg-smoke space">
+    <div class="row justify-content-center">
+        <div class="col-xl-7 text-center">
+            <div class="title-area">
+                <p class="sub-title fadeinup wow" data-wow-duration="1.5s" data-wow-delay="0.1s">
+                    <span class="double-line"></span> Open Positions
+                </p>
+                <h2 class="sec-title fadeinup wow" data-wow-duration="1.5s" data-wow-delay="0.3s">
+                    Join Our Growing Team
+                </h2>
+            </div>
+        </div>
+    </div>
+<!-- Jobs List -->
+<div class="row justify-content-center mt-4 bg-smoke">
+  <div class="col-lg-10">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        Real Estate Project Manager
+        <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#jobProjectManager">
+          Apply Now
+        </button>
+      </li>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        Marketing Executive
+        <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#jobMarketing">
+          Apply Now
+        </button>
+      </li>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        Customer Support Specialist
+        <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#jobSupport">
+          Apply Now
+        </button>
+      </li>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        IT & Digital Solutions Manager
+        <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#jobIT">
+          Apply Now
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>
 
 
+<!-- Modal Template Example -->
+<div class="modal fade mt-5 bg-smoke" id="jobProjectManager" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-center">Real Estate Project Manager</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body" style="max-height:70vh; overflow-y:auto; padding: 1.5rem;">
+        
+        <!-- Job Description -->
+        <div class="mb-4">
+          <h6 class="fw-bold text-primary">Job Description</h6>
+          <p class="text-muted small">
+            We are seeking an experienced Real Estate Project Manager to oversee planning,
+            execution, and delivery of property projects. The candidate should have strong 
+            leadership and negotiation skills.
+          </p>
+          <ul class="small">
+            <li>Oversee project lifecycle from initiation to handover</li>
+            <li>Coordinate with architects, contractors, and stakeholders</li>
+            <li>Ensure compliance with regulatory requirements</li>
+          </ul>
+        </div>
+
+        <!-- Job Application Form -->
+        <h6 class="fw-bold text-primary mb-3">Apply Now</h6>
+        <form>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="name" placeholder="Full Name" required>
+            <label for="name">Full Name</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="email" placeholder="Email" required>
+            <label for="email">Email</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input type="tel" class="form-control" id="phone" placeholder="Phone" required>
+            <label for="phone">Phone</label>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Upload Resume</label>
+            <input type="file" class="form-control">
+          </div>
+
+          <div class="d-grid">
+            <button type="submit" class="btn btn-primary">
+              Submit Application
+            </button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+<!-- Employee Benefits Section -->
+<div class="container bg-smoke space">
+    <div class="row justify-content-center">
+        <div class="col-xl-7">
+            <div class="title-area text-center">
+                <p class="sub-title fadeinup wow" data-wow-duration="1.5s" data-wow-delay="0.1s">
+                    <span class="double-line"></span> Employee Benefits
+                </p>
+                <h2 class="sec-title fadeinup wow" data-wow-duration="1.5s" data-wow-delay="0.3s">
+                    Perks & Rewards for Our Team
+                </h2>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center text-center mt-4">
+        <div class="col-md-6 col-lg-4 mb-4">
+            <h5><strong>Health & Wellness</strong></h5>
+            <p>Comprehensive health insurance and wellness programs for employees and their families.</p>
+        </div>
+        <div class="col-md-6 col-lg-4 mb-4">
+            <h5><strong>Flexible Work</strong></h5>
+            <p>Work-life balance with flexible hours and remote work options.</p>
+        </div>
+        <div class="col-md-6 col-lg-4 mb-4">
+            <h5><strong>Performance Rewards</strong></h5>
+            <p>Bonuses, incentives, and recognition programs to celebrate achievements.</p>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
